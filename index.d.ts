@@ -81,13 +81,13 @@ declare module "nedb" {
          * Insert a new document
          * @param {Function} cb Optional callback, signature: err, insertedDoc
          */
-        insert<T>(newDoc:T):Promise<Error,T>;
+        insert<T>(newDoc:T):Promise<[Error,T]>;
 
         /**
          * Count all documents matching the query
          * @param {any} query MongoDB-style query
          */
-        count(query:any):Promise<Error, number>;
+        count(query:any):Promise<[Error, number]>;
         count(query:any):NeDB.CursorCount;
 
         /**
@@ -96,7 +96,7 @@ declare module "nedb" {
          * @param {any} query MongoDB-style query
          * @param {any} projection MongoDB-style projection
          */
-        find<T>(query:any, projection:T):Promise<Error, Array<T>>;
+        find<T>(query:any, projection:T):Promise<[Error, Array<T>]>;
         find<T>(query:any, projection:T):NeDB.Cursor<T>;
 
         /**
@@ -104,7 +104,7 @@ declare module "nedb" {
          * If no callback is passed, we return the cursor so that user can limit, skip and finally exec
          * * @param {any} query MongoDB-style query
          */
-        find<T>(query:any):Promise<Error, Array<T>>;
+        find<T>(query:any):Promise<[Error, Array<T>]>;
         find<T>(query:any):NeDB.Cursor<T>;
 
         /**
@@ -112,13 +112,13 @@ declare module "nedb" {
          * @param {any} query MongoDB-style query
          * @param {any} projection MongoDB-style projection
          */
-        findOne<T>(query:any, projection:T):Promise<Error, T>;
+        findOne<T>(query:any, projection:T):Promise<[Error, T]>;
 
         /**
          * Find one document matching the query
          * @param {any} query MongoDB-style query
          */
-        findOne<T>(query:any)::Promise<Error, T>;
+        findOne<T>(query:any)::Promise<[Error, T]>;
 
         /**
          * Update all docs matching query
@@ -132,7 +132,7 @@ declare module "nedb" {
          *
          * @api private Use Datastore.update which has the same signature
          */
-        update(query:any, updateQuery:any, options?:NeDB.UpdateOptions):Promise<Error, number, boolean, any, boolean>;
+        update(query:any, updateQuery:any, options?:NeDB.UpdateOptions):Promise<[Error, number, boolean, any, boolean]>;
 
         /**
          * Remove all docs matching the query
@@ -144,8 +144,8 @@ declare module "nedb" {
          *
          * @api private Use Datastore.remove which has the same signature
          */
-        remove(query:any, options:NeDB.RemoveOptions):Promise<Error, number>;
-        remove(query:any):Promise<Error, number>;
+        remove(query:any, options:NeDB.RemoveOptions):Promise<[Error, number]>;
+        remove(query:any):Promise<[Error, number]>;
     }
 
     namespace NeDBDataStore {}
