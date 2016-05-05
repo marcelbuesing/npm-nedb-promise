@@ -199,3 +199,5 @@ export interface Persistence {
   setAutocompactionInterval(interval:number):void;
   stopAutocompaction():void;
 }
+
+export function datastore(options: DataStoreOptions):NeDBDataStore;
