@@ -15,7 +15,7 @@ export class NeDBDataStore {
   /**
    * Load the database from the datafile, and trigger the execution of buffered commands if any
    */
-  loadDatabase():Promise<Error>;
+  loadDatabase():Promise<void>;
 
   /**
    * Get an array of all the data in the database
@@ -37,14 +37,14 @@ export class NeDBDataStore {
    * @param {Boolean} options.sparse
    * @param {Function} cb Optional callback, signature: err
    */
-  ensureIndex(options:EnsureIndexOptions):Promise<Error>;
+  ensureIndex(options:EnsureIndexOptions):Promise<void>;
 
   /**
    * Remove an index
    * @param {String} fieldName
    * @param {Function} cb Optional callback, signature: err
    */
-  removeIndex(fieldName:string):Promise<Error>;
+  removeIndex(fieldName:string):Promise<void>;
 
   /**
    * Add one or several document(s) to all indexes
@@ -81,13 +81,13 @@ export class NeDBDataStore {
    * Insert a new document
    * @param {Function} cb Optional callback, signature: err, insertedDoc
    */
-  insert<T>(newDoc:T):Promise<[Error,T]>;
+  insert<T>(newDoc:T):Promise<[T]>;
 
   /**
    * Count all documents matching the query
    * @param {any} query MongoDB-style query
    */
-  count(query:any):Promise<[Error, number]>;
+  count(query:any):Promise<[number]>;
   count(query:any):CursorCount;
 
   /**
@@ -96,7 +96,7 @@ export class NeDBDataStore {
    * @param {any} query MongoDB-style query
    * @param {any} projection MongoDB-style projection
    */
-  find<T>(query:any, projection:T):Promise<[Error, Array<T>]>;
+  find<T>(query:any, projection:T):Promise<[Array<T>]>;
   find<T>(query:any, projection:T):Cursor<T>;
 
   /**
@@ -104,7 +104,7 @@ export class NeDBDataStore {
    * If no callback is passed, we return the cursor so that user can limit, skip and finally exec
    * * @param {any} query MongoDB-style query
    */
-  find<T>(query:any):Promise<[Error, Array<T>]>;
+  find<T>(query:any):Promise<[Array<T>]>;
   find<T>(query:any):Cursor<T>;
 
   /**
@@ -112,13 +112,13 @@ export class NeDBDataStore {
    * @param {any} query MongoDB-style query
    * @param {any} projection MongoDB-style projection
    */
-  findOne<T>(query:any, projection:T):Promise<[Error, T]>;
+  findOne<T>(query:any, projection:T):Promise<[T]>;
 
   /**
    * Find one document matching the query
    * @param {any} query MongoDB-style query
    */
-  findOne<T>(query:any):Promise<[Error, T]>;
+  findOne<T>(query:any):Promise<[T]>;
 
   /**
    * Update all docs matching query
@@ -132,7 +132,7 @@ export class NeDBDataStore {
    *
    * @api private Use Datastore.update which has the same signature
    */
-  update(query:any, updateQuery:any, options?:UpdateOptions):Promise<[Error, number, boolean, any, boolean]>;
+  update(query:any, updateQuery:any, options?:UpdateOptions):Promise<[number, boolean, any, boolean]>;
 
   /**
    * Remove all docs matching the query
@@ -144,8 +144,8 @@ export class NeDBDataStore {
    *
    * @api private Use Datastore.remove which has the same signature
    */
-  remove(query:any, options:RemoveOptions):Promise<[Error, number]>;
-  remove(query:any):Promise<[Error, number]>;
+  remove(query:any, options:RemoveOptions):Promise<[ number]>;
+  remove(query:any):Promise<[ number]>;
 }
 
 export interface Cursor<T> {
