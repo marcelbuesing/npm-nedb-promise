@@ -128,11 +128,11 @@ export class NeDBDataStore {
    * @param {Object} options Optional options
    *                 options.multi If true, can update multiple documents (defaults to false)
    *                 options.upsert If true, document is inserted if the query doesn't match anything
-   * @param {Function} cb Optional callback, signature: err, numReplaced, upsert (set to true if the update was in fact an upsert)
+   * @param {Function} cb Optional callback, signature: numReplaced, affected docs, upsert (set to true if the update was in fact an upsert)
    *
    * @api private Use Datastore.update which has the same signature
    */
-  update(query:any, updateQuery:any, options?:UpdateOptions):Promise<[number, boolean, any, boolean]>;
+  update(query:any, updateQuery:any, options?:UpdateOptions):Promise<[number, any, boolean]>;
 
   /**
    * Remove all docs matching the query
