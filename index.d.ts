@@ -2,7 +2,6 @@
 // Project: https://github.com/louischatriot/nedb
 // Definitions by: Stefan Steinhart <https://github.com/reppners>
 //                 Marcel Buesing   <http://github.com/marcelbuesing>
-import {Promise} from "es6-promise";
 
 export class NeDBDataStore {
 
