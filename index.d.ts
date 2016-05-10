@@ -96,7 +96,7 @@ export class NeDBDataStore {
    * @param {any} query MongoDB-style query
    * @param {any} projection MongoDB-style projection
    */
-  find<T>(query:any, projection:T):Promise<[Array<T>]>;
+  find<T>(query:any, projection:T):Promise<Array<T>>;
   find<T>(query:any, projection:T):Cursor<T>;
 
   /**
