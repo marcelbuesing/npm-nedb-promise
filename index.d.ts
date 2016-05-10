@@ -81,13 +81,13 @@ export class NeDBDataStore {
    * Insert a new document
    * @param {Function} cb Optional callback, signature: err, insertedDoc
    */
-  insert<T>(newDoc:T):Promise<[T]>;
+  insert<T>(newDoc:T):Promise<T>;
 
   /**
    * Count all documents matching the query
    * @param {any} query MongoDB-style query
    */
-  count(query:any):Promise<[number]>;
+  count(query:any):Promise<number>;
   count(query:any):CursorCount;
 
   /**
@@ -104,7 +104,7 @@ export class NeDBDataStore {
    * If no callback is passed, we return the cursor so that user can limit, skip and finally exec
    * * @param {any} query MongoDB-style query
    */
-  find<T>(query:any):Promise<[Array<T>]>;
+  find<T>(query:any):Promise<Array<T>>;
   find<T>(query:any):Cursor<T>;
 
   /**
@@ -112,13 +112,13 @@ export class NeDBDataStore {
    * @param {any} query MongoDB-style query
    * @param {any} projection MongoDB-style projection
    */
-  findOne<T>(query:any, projection:T):Promise<[T]>;
+  findOne<T>(query:any, projection:T):Promise<T>;
 
   /**
    * Find one document matching the query
    * @param {any} query MongoDB-style query
    */
-  findOne<T>(query:any):Promise<[T]>;
+  findOne<T>(query:any):Promise<T>;
 
   /**
    * Update all docs matching query
@@ -144,8 +144,8 @@ export class NeDBDataStore {
    *
    * @api private Use Datastore.remove which has the same signature
    */
-  remove(query:any, options:RemoveOptions):Promise<[ number]>;
-  remove(query:any):Promise<[ number]>;
+  remove(query:any, options:RemoveOptions):Promise<number>;
+  remove(query:any):Promise<number>;
 }
 
 export interface Cursor<T> {
