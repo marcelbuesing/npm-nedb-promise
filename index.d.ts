@@ -131,7 +131,7 @@ export class NeDBDataStore {
    *
    * @api private Use Datastore.update which has the same signature
    */
-  update(query:any, updateQuery:any, options?:UpdateOptions): Promise<[number, any, boolean]> | Promise<[number, any]> | Promise<number>;
+  update(query:any, updateQuery:any, options?:UpdateOptions): Promise<any>;
 
   /**
    * Remove all docs matching the query
